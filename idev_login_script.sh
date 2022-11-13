@@ -7,4 +7,4 @@ echo "Already logged in"
 else
 aws sso login --profile idev
 fi
-aws eks update-kubeconfig --region ap-northeast-1 --profile idev --name idev;
+aws eks update-kubeconfig --profile idev --name idev;
