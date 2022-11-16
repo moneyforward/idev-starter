@@ -13,7 +13,7 @@ KUBECTL=$(command -v kubectl)
 KUBECTL_VERSION=1.24.0
 
 TELEPRESENCE=$(command -v telepresence)
-TELEPRESENCE_VERSION=2.6.8
+TELEPRESENCE_VERSION=2.8.5
 CHIP=$(uname -m)
 
 # version compare
