@@ -1,0 +1,3 @@
+# ca_sre team will manage this project
+# For each specific application, set the application team as CODEOWNER below
+* @moneyforward/ca_sre
