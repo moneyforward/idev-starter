@@ -86,7 +86,7 @@ else
   CURRENT_TELEPRESENCE_CLI_VERSION=$(telepresence version | grep "Client:" | sed 's/^.*[^0-9]\([0-9]*\.[0-9]*\.[0-9]*\).*$/\1/')
   vercomp $CURRENT_TELEPRESENCE_CLI_VERSION $TELEPRESENCE_VERSION
     case $? in
-        2) 
+        2)
           echo -e "${RED}Alert! Your current Telepresence version lower than v$TELEPRESENCE_VERSION ${NC}"
           read -p "Do you want install Telepresence v$TELEPRESENCE_VERSION [y/N]: " IS_WANT_INSTALL_TELEPRESENCE;
           if [ "y" = "$IS_WANT_INSTALL_TELEPRESENCE" ]; then
