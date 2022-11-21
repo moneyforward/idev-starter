@@ -45,7 +45,7 @@ CURRENT_TELEPRESENCE_CLI_VERSION=$(telepresence version | grep "Client:" | sed '
         2)
           echo -e "${RED}Alert! Your current Telepresence version is v$CURRENT_TELEPRESENCE_CLI_VERSION lower than v$TELEPRESENCE_VERSION ${NC}"
           echo -e "${RED}Please run: ${GREEN}make idev-install${NC} again!"
-          return 0
+          exit 0
     esac
 
-return 1
+exit 1
