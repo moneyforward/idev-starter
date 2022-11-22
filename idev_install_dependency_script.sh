@@ -16,6 +16,8 @@ TELEPRESENCE=$(command -v telepresence)
 TELEPRESENCE_VERSION=2.8.5
 CHIP=$(uname -m)
 
+AWS_PROFILE=idev
+
 # version compare
 vercomp () {
     if [[ $1 == $2 ]]
@@ -129,12 +131,18 @@ then
 	sudo chown root: /usr/local/bin/kubectl; \
 	rm kubectl.sha256;
 fi
+
 echo "docker, docker-compose, aws, kubectl already installed"
-echo -e "${GREEN}##############################################"
-echo -e "# Please take a look at how to aws sso login"
-echo -e "# https://github.com/moneyforward/developer-platform-service-k8s/wiki/%5BProcedure%5D-idev-cluster-connection-procedure#log-in-with-aws_sso"
-echo -e "#"
-echo -e "#"
-echo -e "# Please select aws account ${RED}DEVELOPER-PLATFORM${NC}"
-echo -e "${GREEN}##############################################${NC}"
-aws configure sso --profile idev
+# check aws profile if it already exists
+profile_status=$( (aws configure --profile ${AWS_PROFILE} list ) 2>&1 )
+if [[ $profile_status = *'could not be found'* ]]; then
+  echo -e "${GREEN}##############################################"
+  echo -e "# Please take a look at how to aws sso login"
+  echo -e "# https://github.com/moneyforward/developer-platform-service-k8s/wiki/%5BProcedure%5D-idev-cluster-connection-procedure#log-in-with-aws_sso"
+  echo -e "#"
+  echo -e "#"
+  echo -e "# Please select aws account ${RED}DEVELOPER-PLATFORM${NC}"
+  echo -e "${GREEN}##############################################${NC}"
+
+  aws configure sso --profile ${AWS_PROFILE}
+fi
